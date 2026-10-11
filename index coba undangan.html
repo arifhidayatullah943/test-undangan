@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Pernikahan Arif & Meilya</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background-color: #fcf8f5; color: #4a4a4a; overflow-x: hidden; }
+        
+        /* Cover Depan */
+        #cover {
+            position: fixed; width: 100%; height: 100vh; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            color: white; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; z-index: 999; transition: transform 1s ease;
+            padding: 20px;
+        }
+        #cover h1 { font-family: 'Great Vibes', cursive; font-size: 4rem; margin-bottom: 10px; color: #f3d5b5; }
+        #cover h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 20px; }
+        .btn-open { background: #d4a373; color: white; border: none; padding: 12px 30px; font-size: 1rem; border-radius: 30px; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+        .btn-open:hover { background: #bc6c25; }
+
+        /* Konten Utama */
+        .container { max-width: 700px; margin: 0 auto; background: white; box-shadow: 0 0 20px rgba(0,0,0,0.05); min-height: 100vh; display: none; }
+        section { padding: 60px 30px; text-align: center; border-bottom: 1px solid #f0ebd8; }
+        
+        h2.section-title { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: #6b4423; margin-bottom: 20px; }
+        p { line-height: 1.8; color: #666; margin-bottom: 15px; }
+        
+        /* Mempelai */
+        .couple-names { font-family: 'Great Vibes', cursive; font-size: 3rem; color: #bc6c25; margin: 20px 0; }
+        
+        /* Hitung Mundur */
+        .countdown { display: flex; justify-content: center; gap: 15px; margin: 30px 0; }
+        .box-time { background: #fefae0; padding: 15px; border-radius: 10px; min-width: 70px; border: 1px solid #faedcd; }
+        .box-time span { display: block; font-size: 1.5rem; font-weight: 600; color: #bc6c25; }
+        .box-time label { font-size: 0.8rem; color: #888; }
+
+        /* RSVP Form */
+        form { display: flex; flex-direction: column; gap: 15px; text-align: left; margin-top: 20px; }
+        input, select, textarea { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-family: 'Poppins', sans-serif; }
+        button[type="submit"] { background: #bc6c25; color: white; border: none; padding: 12px; border-radius: 8px; font-size: 1rem; cursor: pointer; transition: 0.3s; }
+        button[type="submit"]:hover { background: #9b581e; }
+        
+        .quote { font-style: italic; background: #fdf0ed; padding: 25px; border-left: 4px solid #bc6c25; margin: 20px 0; border-radius: 4px; text-align: left; }
+    </style>
+</head>
+<body>
+
+    <!-- Cover Depan -->
+    <div id="cover">
+        <p>Undangan Pernikahan</p>
+        <h1>Arif & Meilya</h1>
+        <p style="margin-bottom: 30px;">Kepada Bapak/Ibu/Saudara/i</p>
+        <button class="btn-open" onclick="bukaUndangan()">Buka Undangan</button>
+    </div>
+
+    <!-- Halaman Utama Undangan -->
+    <div class="container" id="mainContent">
+        
+        <!-- Pembuka & Ayat -->
+        <section>
+            <h2 class="section-title">The Wedding of</h2>
+            <div class="couple-names">Arif Hidayatullah & Meilya Handayani</div>
+            <div class="quote">
+                “Dan di antara tanda-tanda kebesaran-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya...” <strong>(QS. Ar-Rum: 21)</strong>
+            </div>
+        </section>
+
+        <!-- Mempelai -->
+        <section>
+            <h2 class="section-title">Mempelai Bahagia</h2>
+            <p>Putra dari Bapak Sapei & Ibu Tonaliah</p>
+            <h3 style="font-family: 'Playfair Display'; color: #bc6c25; font-size: 1.8rem;">Arif Hidayatullah</h3>
+            <p style="margin: 20px 0;">&</p>
+            <p>Putri dari Bapak Mulyana & Ibu Wahyuni</p>
+            <h3 style="font-family: 'Playfair Display'; color: #bc6c25; font-size: 1.8rem;">Meilya Handayani</h3>
+        </section>
+
+        <!-- Waktu & Tempat -->
+        <section>
+            <h2 class="section-title">Waktu & Tempat</h2>
+            <p><strong>Hari / Tanggal:</strong> Sabtu, 26 Juni 2027</p>
+            <p><strong>Pukul:</strong> 10.00 – 13.00 WIB</p>
+            <p><strong>Lokasi:</strong> Gedung ABC</p>
+            
+            <div class="countdown">
+                <div class="box-time"><span id="days">0</span><label>Hari</label></div>
+                <div class="box-time"><span id="hours">0</span><label>Jam</label></div>
+                <div class="box-time"><span id="minutes">0</span><label>Menit</label></div>
+                <div class="box-time"><span id="seconds">0</span><label>Detik</label></div>
+            </div>
+            
+            <a href="https://maps.google.com" target="_blank" style="display: inline-block; margin-top: 15px; padding: 10px 20px; background: #283618; color: white; text-decoration: none; border-radius: 5px;">Lihat Lokasi (Google Maps)</a>
+        </section>
+
+        <!-- RSVP & Buku Tamu -->
+        <section>
+            <h2 class="section-title">Buku Tamu & RSVP</h2>
+            <p>Konfirmasi kehadiran Anda melalui formulir di bawah ini:</p>
+            
+            <form id="rsvpForm" onsubmit="submitRSVP(event)">
+                <label>Nama Lengkap</label>
+                <input type="text" id="nama" name="nama" required placeholder="Masukkan nama Anda">
+                
+                <label>Konfirmasi Kehadiran</label>
+                <select id="kehadiran" name="kehadiran" required>
+                    <option value="Hadir">Hadir</option>
+                    <option value="Tidak Hadir">Berhalangan Hadir</option>
+                </select>
+
+                <label>Jumlah Tamu</label>
+                <input type="number" id="jumlah" name="jumlah" value="1" min="1" max="5">
+                
+                <label>Pesan & Doa Restu</label>
+                <textarea id="pesan" name="pesan" rows="4" placeholder="Tuliskan ucapan atau doa untuk kedua mempelai..."></textarea>
+                
+                <button type="submit">Kirim Konfirmasi</button>
+            </form>
+            <div id="notif" style="margin-top: 15px; font-weight: 500; color: #283618;"></div>
+        </section>
+
+        <!-- Penutup -->
+        <section style="background: #fdf0ed;">
+            <p>Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir.</p>
+            <p style="margin-top: 20px;">Wassalamu’alaikum Warahmatullahi Wabarakatuh</p>
+            <h3 style="font-family: 'Great Vibes'; font-size: 2.5rem; color: #bc6c25; margin-top: 20px;">Arif & Meilya</h3>
+        </section>
+
+    </div>
+
+    <script>
+        // Efek Membuka Undangan
+        function bukaUndangan() {
+            const cover = document.getElementById('cover');
+            const main = document.getElementById('mainContent');
+            cover.style.transform = 'translateY(-100vh)';
+            main.style.display = 'block';
+            setTimeout(() => { cover.style.display = 'none'; }, 1000);
+        }
+
+        // Hitung Mundur (Countdown Timer ke 26 Juni 2027)
+        const weddingDate = new Date("June 26, 2027 10:00:00").getTime();
+        const x = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            document.getElementById("days").innerText = Math.floor(distance / (1000 * 60 * 60 * 24));
+            document.getElementById("hours").innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            document.getElementById("minutes").innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            document.getElementById("seconds").innerText = Math.floor((distance % (1000 * 60)) / 1000);
+
+            if (distance < 0) {
+                clearInterval(x);
+                document.querySelector(".countdown").innerHTML = "<b>Acara Sedang / Telah Berlangsung</b>";
+            }
+        }, 1000);
+
+        // Fungsi Kirim RSVP ke Google Spreadsheet (Ganti URL dengan Web App Endpoint Anda)
+        function submitRSVP(e) {
+            e.preventDefault();
+            const notif = document.getElementById('notif');
+            notif.innerText = "Mengirim data...";
+
+            const formData = {
+                nama: document.getElementById('nama').value,
+                kehadiran: document.getElementById('kehadiran').value,
+                jumlah: document.getElementById('jumlah').value,
+                pesan: document.getElementById('pesan').value
+            };
+
+            // Contoh integrasi menggunakan Google Apps Script / SheetDB URL:
+            // Ganti 'URL_WEB_APP_ANDA_DISINI' dengan endpoint Google Script Anda
+            const scriptURL = 'URL_WEB_APP_ANDA_DISINI'; 
+
+            if(scriptURL === 'URL_WEB_APP_ANDA_DISINI') {
+                // Simulasi berhasil jika belum diatur endpoint-nya
+                setTimeout(() => {
+                    notif.innerText = "Terima kasih! Konfirmasi kehadiran Anda berhasil tercatat.";
+                    document.getElementById('rsvpForm').reset();
+                }, 1000);
+                return;
+            }
+
+            fetch(scriptURL, { method: 'POST', body: JSON.stringify(formData) })
+                .then(response => {
+                    notif.innerText = "Terima kasih! Konfirmasi kehadiran Anda berhasil disimpan.";
+                    document.getElementById('rsvpForm').reset();
+                })
+                .catch(error => {
+                    notif.innerText = "Terjadi kesalahan, silahkan coba lagi.";
+                });
+        }
+    </script>
+</body>
+</html>
